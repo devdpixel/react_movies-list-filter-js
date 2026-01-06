@@ -6,7 +6,7 @@ import { useState } from 'react';
 export const App = () => {
   const [query, setQuery] = useState('');
   const refinedQuery = query.toLowerCase().trim();
-  const visibleMovies = [...moviesFromServer].filter(movie => {
+  const visibleMovies = moviesFromServer.filter(movie => {
     return (
       movie.title.toLowerCase().trim().includes(refinedQuery) ||
       movie.description.toLowerCase().trim().includes(refinedQuery)
@@ -25,8 +25,8 @@ export const App = () => {
 
             <div className="control">
               <input
-                onChange={e => {
-                  setQuery(e.target.value);
+                onChange={event => {
+                  setQuery(event.target.value);
                 }}
                 type="text"
                 id="search-query"
